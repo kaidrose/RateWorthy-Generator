@@ -1,0 +1,35 @@
+name: Build Geode Mod
+
+on:
+  push:
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Install Build Tools
+        run: |
+          sudo apt update
+          sudo apt install -y cmake ninja-build git g++
+
+      - name: Configure Project
+        run: |
+          cmake -B build -G Ninja .
+
+      - name: Build Mod
+        run: |
+          cmake --build build
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: geode-mod
+          path: build
