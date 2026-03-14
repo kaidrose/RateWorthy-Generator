@@ -1,0 +1,9 @@
+{
+  "geode": "2.0.0",
+  "version": "1.0.0",
+  "id": "tari6.rateworthy",
+  "name": "Rate Worthy Generator",
+  "developer": "Tari6",
+  "description": "Automatically generates rate worthy levels in the editor.",
+  "tags": ["generator","editor"]
+}
