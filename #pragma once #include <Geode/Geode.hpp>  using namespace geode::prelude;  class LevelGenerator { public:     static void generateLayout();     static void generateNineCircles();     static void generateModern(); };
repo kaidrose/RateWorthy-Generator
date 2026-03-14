@@ -1,0 +1,11 @@
+#pragma once
+#include <Geode/Geode.hpp>
+
+using namespace geode::prelude;
+
+class LevelGenerator {
+public:
+    static void generateLayout();
+    static void generateNineCircles();
+    static void generateModern();
+};
