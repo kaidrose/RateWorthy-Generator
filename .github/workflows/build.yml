@@ -1,0 +1,33 @@
+name: Build Geode Mod
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y cmake ninja-build git
+
+      - name: Clone Geode
+        run: |
+          git clone https://github.com/geode-sdk/geode.git
+
+      - name: Build Mod
+        run: |
+          cmake -B build -G Ninja
+          cmake --build build
+
+      - name: Upload Mod
+        uses: actions/upload-artifact@v4
+        with:
+          name: geode-mod
+          path: build/*.geode
